@@ -11,14 +11,10 @@ default: &default
 development:
   <<: *default
   database: stock_app_development
-  username: mmdeguzman
-  password: 'mmdakd1245'
 
 test:
   <<: *default
   database: stock_app_test
-  username: mmdeguzman
-  password: 'mmdakd1245'
 
 production:
   <<: *default
