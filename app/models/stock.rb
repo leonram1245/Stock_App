@@ -1,4 +1,4 @@
 class Stock < ApplicationRecord
     resourcify
-    has_many :transactions
+    belongs_to :transaction
 end
