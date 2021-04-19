@@ -5,9 +5,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
-#   def configure_permitted_parameters
-#     devise_parameter_sanitizer
-#   end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email,
+                                                      :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email,
+                                                       :password,
+                                                       :password_confirmation],
+                                                       role: [])
+  end
 
   def after_sign_in_path_for(resource)
     if current_user.has_role? :admin
