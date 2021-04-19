@@ -1,15 +1,16 @@
 class BrokersController < ApplicationController
-    def index
-    end
 
-    def show
-    end
+  def index
+  end
 
-    def new
-    end
+  def show
+  end
 
-    def create
-    end
+  def new
+  end
 
-    private
+  def create
+  end
+
+  private
 end
