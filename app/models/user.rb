@@ -8,5 +8,7 @@ class User < ApplicationRecord
 
   validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: { case_sensitive: false }
-  has_many :transactions, dependent: :destroy
+  has_many :deals, dependent: :destroy
+  has_many :stocks, through: :deals
+  has_many :buyers_stocks, through: :deals
 end
