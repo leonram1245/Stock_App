@@ -11,12 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email,
                                                        :password,
                                                        :password_confirmation],
-                                                       role: [])
+                                                       [:role])
   end
 
   def after_sign_in_path_for(resource)
     if current_user.has_role? :admin
-      dashboard_path
+      rails_admin_path
     elsif current_user.has_role? :buyer
       buyers_path
     elsif current_user.has_role? :broker
