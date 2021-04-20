@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
                                                       :password])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email,
                                                        :password,
-                                                       :password_confirmation],
-                                                       [:role])
+                                                       :password_confirmation,
+                                                       roles: []])
   end
 
   def after_sign_in_path_for(resource)

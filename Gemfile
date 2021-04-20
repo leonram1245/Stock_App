@@ -8,6 +8,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
+
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'simple_form', '~> 5.1'
@@ -37,6 +38,8 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
