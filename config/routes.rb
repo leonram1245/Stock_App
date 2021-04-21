@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
- 
-  devise_for :users
+  resources :dashboard, only: [:index]
+  devise_for :users, controllers:  {
+    confirmations:'confirmations'
+  }
   root 'home#index'
   get 'home/index'
 
