@@ -1,5 +1,11 @@
-<h1>Welcome!</h1>
+<h1>Welcome <%= current_user.email %></h1>
 
 <% if user_signed_in? %>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'Update Info', edit_user_registration_path %><br>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
 <% end %>
+<br>
+<% quote = @client.quote('MSFT') %>
+<h1>Quote: MSFT</h1>
+<h1>Latest price: <%= quote.latest_price %></h1>
+<h2>Change: <%= quote.change %></h2>
