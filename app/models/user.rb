@@ -4,7 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   rolify
-  ROLES = %w[admin broker buyer].freeze
+  
+  ROLES = %w[broker buyer]
+
+  def role_symbols
+    [role.to_sym]
+  end
 
   validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: { case_sensitive: false }
