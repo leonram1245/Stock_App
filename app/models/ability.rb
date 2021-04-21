@@ -11,9 +11,10 @@ class Ability
       can :manage, :dashboard         # allow access to dashboard
     elsif user.has_role? :buyer
       can :manage, Buyers_stock
+      can :read, Buyers_stock
     elsif user.has_role? :broker
-      can :manage, :all
-      can :read, :all
+      can :manage, Stock
+      can :read, Stock
     end
   end
 end
