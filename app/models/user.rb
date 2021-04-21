@@ -5,12 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   rolify
   
-  ROLES = %w[broker buyer]
-
-  def role_symbols
-    [role.to_sym]
-end
-
+  
   validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: { case_sensitive: false }
   has_many :deals, dependent: :destroy
