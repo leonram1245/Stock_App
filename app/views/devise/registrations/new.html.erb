@@ -7,7 +7,7 @@
  <%= f.input :password %>
  <%= f.input :password_confirmation %>
  <%= f.input :roles, as: :radio_buttons, collection: Role.where.not(name:'admin'), value_method: :name, required: true%>
-
+  <%= f.submit "Sign up" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
