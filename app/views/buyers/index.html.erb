@@ -1,0 +1,13 @@
+<%#test calls%>
+
+<%balance_sheets = @client.balance_sheet('MSFT').to_a%>
+<%quote = @client.quote('MSFT')%>
+<%company = @client.company('MSFT')%>
+
+<h1><%=company.company_name%></h1>
+<h4>Price:$<%=quote.latest_price%></h4>
+<h4>Balance_sheet:<%=balance_sheets.first%></h4>
+
+
+
+<%=puts balance_sheets.class%>
