@@ -25,10 +25,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootsnap', '>= 1.4.4', require: false
 # User authentication
 gem 'devise'
-#Admin Users-Rails Admin Gem
+# Admin Users-Rails & User-Roles
 gem 'cancancan'
 gem 'rolify', '~> 5.3'
+# IEX stock trading API
 gem 'iex-ruby-client'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
