@@ -30,6 +30,7 @@ gem 'cancancan'
 gem 'rolify', '~> 5.3'
 # IEX stock trading API
 gem 'iex-ruby-client'
+gem 'rails_admin_rollincode', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
