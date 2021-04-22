@@ -7,6 +7,11 @@ before_action :configure_sign_up_params, only: [:create]
     def create
       super
       resource.add_role(params[:user][:roles])
+      if current_user.has_role? :buyer
+        #logic here
+      elsif current_user.has_role? :broker
+        #logic here
+      end
     end
   
     protected
@@ -20,10 +25,4 @@ before_action :configure_sign_up_params, only: [:create]
     
   end
 
-  def after_inactive_sign_up_path_for(resource)
-    if current_user.has_role? :buyer
-     #pass logic here
-    elsif current_user.has_role? :broker
-      #pass logic here
-  end
-end
+ 
