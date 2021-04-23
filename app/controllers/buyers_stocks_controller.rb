@@ -1,4 +1,5 @@
 class BuyersStocksController < ApplicationController
+  #before_action :set_buyers_stock, only: [:show :edit :update :destroy]
 
   def index
     @buyers_stocks = BuyersStock.all
