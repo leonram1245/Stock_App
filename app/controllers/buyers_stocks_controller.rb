@@ -1,5 +1,4 @@
 class BuyersStocksController < ApplicationController
-  before_action :set_buyers_stock, only: [:show :edit :update :destroy]
 
   def index
     @buyers_stocks = BuyersStock.all
@@ -53,5 +52,5 @@ class BuyersStocksController < ApplicationController
     def set_buyers_stock
       @buyers_stock = BuyersStock.find(params[:id])
     end
-
 end
+  
