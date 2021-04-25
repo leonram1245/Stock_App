@@ -32,6 +32,7 @@ gem 'rolify', '~> 5.3'
 gem 'iex-ruby-client'
 gem 'rails_admin_rollincode', '~> 1.0'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -54,6 +55,8 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 
