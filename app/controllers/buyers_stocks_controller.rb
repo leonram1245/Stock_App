@@ -53,5 +53,5 @@ class BuyersStocksController < ApplicationController
     def set_buyers_stock
       @buyers_stock = BuyersStock.find(params[:id])
     end
+
 end
-  
