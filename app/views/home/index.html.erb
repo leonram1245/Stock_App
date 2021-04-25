@@ -1,11 +1,35 @@
-<h1>Welcome <%= current_user.email %></h1>
+
 
 <% if user_signed_in? %>
+<h1>Welcome <%= current_user.email %></h1>
+
   <%= link_to 'Update Info', edit_user_registration_path %><br>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
-<% end %>
+
+<%= form_tag root_path, :method => 'POST' do%>
+<%= text_field_tag 'ticker', nil, placeholder:'enter ticker symbol', size: 50%>
+<%= submit_tag 'Search'%>
+<%end%>
+<%if @company%>
+<%=@company.company_name%>
+<%end%>
 <br>
-<% quote = @client.quote('MSFT') %>
-<h1>Quote: MSFT</h1>
-<h1>Latest price: <%= quote.latest_price %></h1>
-<h2>Change: <%= quote.change %></h2>
+<% if @quote%>
+<table>
+<tr>
+<th>latest_price</th>
+<th>change</th>
+<th>change_percent</th>
+<th>change_percent_s</th>
+</tr>
+</table>
+<tr>
+<td><%=@quote.latest_price %></td>
+<td><%=@quote.change %></td>
+<td><%=@quote.change_percent %></td>
+<td><%=@quote.change_percent_s %></td>
+</tr>
+<% end %>
+
+<%end%>
+
