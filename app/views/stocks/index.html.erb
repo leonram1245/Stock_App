@@ -1,0 +1,17 @@
+<h1>Broker's Dashboard</h1>
+<br>
+<%= link_to 'Home', home_index_path %>
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'Update Info', edit_user_registration_path %><br>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
+<% end %>
+<br>
+<div class="input-group">
+  <%= form_tag(home_index_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= submit_tag "Buy Stock", class: 'btn btn-default' %>
+    </span>
+  <% end %>
+</div>
