@@ -1,5 +1,8 @@
 class BuyersStocksController < ApplicationController
-  #before_action :set_buyers_stock, only: [:show :edit :update :destroy]
+  before_action :set_buyers_stock, only: [:show, :edit, :update, :destroy]
+  
+  def dashboard
+  end
 
   def index
     @buyers_stocks = BuyersStock.all
@@ -16,7 +19,7 @@ class BuyersStocksController < ApplicationController
   end
 
   def create
-    @buyers_stock = BuyersStock.new(buyer_stock_params)
+    @buyers_stock = BuyersStock.new(buyers_stock_params)
 
     respond_to do |format|
       if @buyers_stock.save
@@ -31,7 +34,7 @@ class BuyersStocksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @buyers_stock.update(stock_params)
+      if @buyers_stock.update(buyers_stock_params)
         format.html { redirect_to @buyers_stock, notice: "Buyer's Stock succesfully updated!" }
         format.json { render :show, status: :ok, location: @buyers_stock }
       else
@@ -50,8 +53,13 @@ class BuyersStocksController < ApplicationController
   end
 
   private
+
     def set_buyers_stock
       @buyers_stock = BuyersStock.find(params[:id])
+    end
+
+    def buyers_stock_params
+      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount, :deal_id)
     end
 end
   
