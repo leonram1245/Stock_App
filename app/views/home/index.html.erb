@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/eds-branch
-
 <h1>Home</h1>
 <br>
   <% if current_user.has_role?(:broker) %>
@@ -14,12 +9,7 @@
   <% end %>
 <br>
 <% if user_signed_in? %>
-<<<<<<< HEAD
-<h1>Welcome <%= current_user.email %></h1>
 
-  <%= link_to 'Update Info', edit_user_registration_path %><br>
-=======
->>>>>>> origin/eds-branch
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
 
 <%= form_tag root_path, :method => 'POST' do%>
@@ -30,26 +20,6 @@
 <%=@company.company_name%>
 <%end%>
 <br>
-<<<<<<< HEAD
-<% if @quote%>
-<table>
-<tr>
-<th>latest_price</th>
-<th>change</th>
-<th>change_percent</th>
-<th>change_percent_s</th>
-</tr>
-</table>
-<tr>
-<td><%=@quote.latest_price %></td>
-<td><%=@quote.change %></td>
-<td><%=@quote.change_percent %></td>
-<td><%=@quote.change_percent_s %></td>
-</tr>
-<% end %>
-
-<%end%>
-=======
 
 <h1>Top Ten Stocks</h1>
   <table>
@@ -99,5 +69,5 @@
 
 
 
->>>>>>> origin/eds-branch
+
 
