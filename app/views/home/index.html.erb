@@ -1,11 +1,65 @@
-<h1>Welcome <%= current_user.email %></h1>
 
+<h1>Home</h1>
+<br>
+  <% if current_user.has_role?(:broker) %>
+    <%= link_to 'Broker\'s dashboard', deal_stocks_path(:deal_id) %>
+  <% elsif current_user.has_role?(:buyer) %>
+    <%= link_to 'Buyer\'s dashboard', deal_buyers_stocks_path(:deal_id) %>
+  <% elsif current_user.has_role?(:admin) %>
+    <%= link_to 'Admin\'s dashboard', rails_admin_path %>
+  <% end %>
+<br>
 <% if user_signed_in? %>
-  <%= link_to 'Update Info', edit_user_registration_path %><br>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
 <% end %>
 <br>
-<% quote = @client.quote('MSFT') %>
-<h1>Quote: MSFT</h1>
-<h1>Latest price: <%= quote.latest_price %></h1>
-<h2>Change: <%= quote.change %></h2>
+
+<h1>Top Ten Stocks</h1>
+  <table>
+    <thead>
+      <th>No.</th>
+      <th>Ticker</th>
+      <th>Company</th>
+      <th>Latest Price</th>
+      <th>Percent Change</th>
+    </thead>
+    <tbody>
+       <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
+       <tr>
+         <td><%= index + 1 %>
+         <td><%= quote.symbol %></td>
+         <td><%= quote.company_name %></td>
+         <td>$ <%= quote.latest_price %></td>
+         <td><%= quote.change_percent %> %</td>
+       </tr>
+       <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<div class="input-group">
+  <%= form_tag(home_index_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= submit_tag "Search", class: 'btn btn-default' %>
+    </span>
+  <% end %>
+</div>
+<br>
+
+<div>
+  <% unless params[:search].blank? %>
+    <% quote = @client.quote(params[:search]) %>
+      <p>Ticker: <%= quote.symbol %></p>
+      <p>Company Name: <%= quote.company_name %></p>
+      <p>Latest Price: $ <%= quote.latest_price %></p>
+      <p>Percent Change: <%= quote.change_percent %> %</p>
+  <% end %>
+</div> 
+
+
+
+
+
+
