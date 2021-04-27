@@ -12,8 +12,7 @@ class Ability
     elsif user.has_role? :buyer
       can :manage, Buyers_stock
     elsif user.has_role? :broker
-      can :manage, :all
-      can :read, :all
+      can :manage, Stock
     end
   end
 end

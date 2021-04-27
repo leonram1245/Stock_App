@@ -1,8 +1,18 @@
 class  ConfirmationsController < Devise::ConfirmationsController
-private
+  before_action :authenticate_user!
+  
+  private
 
-def after_confirmation_path_for(resource_name,resource)
-    sign_in(resource)
-    root_path
-end
+    def after_confirmation_path_for(resource_name,resource)
+      sign_in(resource)
+      if current_user.has_role? :admin
+        rails_admin_path
+      elsif current_user.has_role? :buyer
+        buyers_stocks_path(:deal_id)
+      elsif current_user.has_role? :broker
+        stocks_path(:deal_id)
+      else
+        root_path
+      end
+    end
 end

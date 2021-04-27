@@ -2,11 +2,15 @@
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-<%= f.input :email, placeholder: 'user@domain.com',required: true%>
- <%= f.input :password,required: true %>
- <%= f.input :password_confirmation,required: true %>
- <%= f.input :roles,  collection: Role.where.not(name:'admin'), value_method: :name, required: true%>
+  
+  <%= f.input :email, placeholder: 'user@domain.com', required: true%>
+  
+  <%= f.input :password, required: true %>
+  
+  <%= f.input :password_confirmation, required: true %>
+  
+  <%= f.input :roles, collection: Role.where.not(name:'admin'), value_method: :name, required: true %>
+  
   <%= f.submit "Sign up" %>
 <% end %>
 
