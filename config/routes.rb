@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   
   root 'home#index'
   get 'home/index'
-  get 'stocks/dashboard'
-  get 'buyers_stocks/dashboard'
 
   resources :deals do
     resources :buyers_stocks
