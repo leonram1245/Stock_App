@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_121432) do
+ActiveRecord::Schema.define(version: 2021_04_29_190448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "broker_accounts", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "broker_stocks", force: :cascade do |t|
+    t.integer "stock_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "broker_transactions", force: :cascade do |t|
+    t.integer "broker_stock_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,15 +38,16 @@ ActiveRecord::Schema.define(version: 2021_04_27_121432) do
     t.string "company"
     t.integer "quantity"
     t.float "amount"
-    t.integer "stock_id"
-    t.integer "deal_id"
+    t.integer "broker_stock_id"
   end
 
-  create_table "deals", force: :cascade do |t|
+  create_table "buyers_transactions", force: :cascade do |t|
+    t.integer "buyers_stock_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "stock_id"
-    t.integer "buyers_stock_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -57,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_121432) do
     t.string "ticker"
     t.string "company"
     t.integer "user_id"
-    t.integer "deal_id"
   end
 
   create_table "users", force: :cascade do |t|
