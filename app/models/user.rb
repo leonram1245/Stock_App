@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   has_many :stocks, dependent: :destroy
   has_many :broker_stocks, through: :stocks
-  has_many :buyers_stocks, through: :broker_stocks, foreign_key: :broker_stock_id, source: :broker_stock
-  has_many :buyers_transactions, through: :buyers_stocks
-  has_many :broker_transactions, through: :broker_stocks
+  has_many :buyers_stocks, through: :broker_stocks, foreign_key: :broker_stock_id
+  has_many :buyers_transactions, through: :buyers_stocks, foreign_key: :buyers_stock_id
+  # has_many :broker_transactions, through: :broker_stocks, foreign_key: :broker_stock_id
 end
