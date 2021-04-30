@@ -1,36 +1,52 @@
 
-<h1>Home</h1>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <div>
+    <%= link_to 'About', home_about_path %>
+  </div>
+  <div>
+    <% if current_user.has_role?(:broker) %>
+      <%= link_to 'Broker\'s Portfolio', deal_stocks_path(:deal_id) %>
+    <% elsif current_user.has_role?(:buyer) %>
+      <%= link_to 'Buyer\'s Portolio', deal_buyers_stocks_path(:deal_id) %>
+    <% elsif current_user.has_role?(:admin) %>
+      <%= link_to 'Admin\'s Dashboard', rails_admin_path %>
+    <% end %>
+  </div>
+  <input type="text" placeholder="Search..">
+</div>
+
 <br>
-  <% if current_user.has_role?(:broker) %>
-    <%= link_to 'Broker\'s dashboard', deal_stocks_path(:deal_id) %>
-  <% elsif current_user.has_role?(:buyer) %>
-    <%= link_to 'Buyer\'s dashboard', deal_buyers_stocks_path(:deal_id) %>
-  <% elsif current_user.has_role?(:admin) %>
-    <%= link_to 'Admin\'s dashboard', rails_admin_path %>
-  <% end %>
+  
 <br>
-<% if user_signed_in? %>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %><br>
-<% end %>
+
 <br>
 
 <h1>Top Ten Stocks</h1>
-  <table>
-    <thead>
-      <th>No.</th>
-      <th>Ticker</th>
-      <th>Company</th>
-      <th>Latest Price</th>
-      <th>Percent Change</th>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Company</th>
+      <th scope="col">Open Price</th>
+      <th scope="col">Close Price</th>
+      <th scope="col">Percent Change</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+    </tr>
     </thead>
     <tbody>
        <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
        <tr>
-         <td><%= index + 1 %>
-         <td><%= quote.symbol %></td>
-         <td><%= quote.company_name %></td>
-         <td>$ <%= quote.latest_price %></td>
-         <td><%= quote.change_percent %> %</td>
+         <td scope="row"><%= index + 1 %></td>
+         <td scope="row"><%= quote.symbol %></td>
+         <td scope="row"><%= quote.company_name %></td>
+         <td scope="row">$ <%= quote.open %></td>
+         <td scope="row">$ <%= quote.close %></td>
+         <td scope="row"><%= quote.change_percent %> %</td>
+         <td scope="row"><%= quote.high %> %</td>
+         <td scope="row"><%= quote.low %> %</td>
        </tr>
        <% end %>
     </tbody>
@@ -57,9 +73,6 @@
       <p>Percent Change: <%= quote.change_percent %> %</p>
   <% end %>
 </div> 
-
-
-
 
 
 
