@@ -19,9 +19,8 @@ class ApplicationController < ActionController::Base
         stocks_path
       else
         root_path
-      end
     end
 end
 
-
+end
 
