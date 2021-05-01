@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers:  {
     confirmations:'confirmations',
-    registrations: 'registrations' 
+    registrations: 'registrations'
   }
-  
+
   root 'home#index'
   get 'home/index'
   get 'home/about'
-
   
-  resources :deals do
-    resources :buyers_stocks
-    resources :stocks
-  end
+  resources :buyers_stocks
+  resources :stocks
 end
