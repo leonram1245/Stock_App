@@ -1,9 +1,6 @@
 class BuyersStocksController < ApplicationController
   before_action :set_buyers_stock, only: [:show, :edit, :update, :destroy]
   
-  def dashboard
-  end
-
   def index
     @buyers_stocks = BuyersStock.all
   end
@@ -59,7 +56,7 @@ class BuyersStocksController < ApplicationController
     end
 
     def buyers_stock_params
-      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount, :deal_id)
+      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount)
     end
 end
   

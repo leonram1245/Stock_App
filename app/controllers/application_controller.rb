@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
       if current_user.has_role? :admin
         rails_admin_path
       elsif current_user.has_role? :buyer
-        deal_buyers_stocks_path(:deal_id)
+        buyers_stocks_path
       elsif current_user.has_role? :broker
-        deal_stocks_path(:deal_id)
+        stocks_path
       else
         root_path
       end

@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_065652) do
+ActiveRecord::Schema.define(version: 2021_04_29_190448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "broker_stocks", force: :cascade do |t|
+    t.integer "stock_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "broker_transactions", force: :cascade do |t|
+    t.integer "broker_stock_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "buyers_stocks", force: :cascade do |t|
     t.float "price"
@@ -23,11 +38,14 @@ ActiveRecord::Schema.define(version: 2021_04_26_065652) do
     t.string "company"
     t.integer "quantity"
     t.float "amount"
-    t.integer "deal_id"
+    t.integer "broker_stock_id"
   end
 
-  create_table "deals", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "buyers_transactions", force: :cascade do |t|
+    t.integer "buyers_stock_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_065652) do
     t.bigint "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "transaction_id"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
@@ -49,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_065652) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "ticker"
     t.string "company"
-    t.integer "deal_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +77,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_065652) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "email_confirmed"
+    t.string "confirm_token"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

@@ -1,11 +1,13 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :delete]
-
-  def dashboard
-  end
   
   def index
     @stocks = Stock.all
+
+    @client = IEX::Api::Client.new(
+      publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
+      endpoint: 'https://sandbox.iexapis.com/v1'
+    )
   end
 
   def show
@@ -59,6 +61,6 @@ class StocksController < ApplicationController
     end
 
     def stock_params
-      params.require(:stock).permit(:price, :ticker, :company, :deal_id)
+      params.require(:stock).permit(:price, :ticker, :company)
     end
 end
