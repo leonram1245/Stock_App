@@ -1,2 +1,0 @@
-class BuyerTransactionsController < ApplicationController
-end
