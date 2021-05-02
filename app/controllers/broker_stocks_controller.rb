@@ -2,7 +2,7 @@ class BrokerStocksController < ApplicationController
   before_action :set_broker_stock, only: %i[ show edit update destroy ]
   
   def index
-    @broker_stocks = BrokerStock.all
+    @broker_stocks = current_user.broker_stocks
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
       endpoint: 'https://sandbox.iexapis.com/v1'
@@ -13,7 +13,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def new
-    @broker_stock = BrokerStock.new
+    @broker_stock = current_user.broker_stocks.build
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
       endpoint: 'https://sandbox.iexapis.com/v1'
@@ -24,7 +24,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def create
-    @broker_stock = BrokerStock.new(broker_stock_params)
+    @broker_stock = current_user.broker_stocks.build(broker_stock_params)
     
     respond_to do |format|
       if @broker_stock.save
@@ -60,7 +60,7 @@ class BrokerStocksController < ApplicationController
   private
 
     def set_broker_stock
-      @broker_stock = BrokerStock.find(params[:id])
+      @broker_stock = current_user.broker_stocks.find(params[:id])
     end
 
     def broker_stock_params
