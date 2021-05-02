@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home/index'
+  get 'home/search'
   get 'home/about'
   
-
   resources :broker_stocks do
     resources :broker_transactions 
   end
