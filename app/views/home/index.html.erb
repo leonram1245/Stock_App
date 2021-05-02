@@ -34,35 +34,37 @@
             </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Top Ten Stocks</h1>
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Symbol</th>
-                      <th scope="col">Company</th>
-                      <th scope="col">Open Price</th>
-                      <th scope="col">Close Price</th>
-                      <th scope="col">Percent Change</th>
-                      <th scope="col">High</th>
-                      <th scope="col">Low</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
-                      <tr>
-                        <td scope="row"><%= index + 1 %></td>
-                        <td scope="row"><%= quote.symbol %></td>
-                        <td scope="row"><%= quote.company_name %></td>
-                        <td scope="row">$ <%= quote.open %></td>
-                        <td scope="row">$ <%= quote.close %></td>
-                        <td scope="row"><%= quote.change_percent %> %</td>
-                        <td scope="row"><%= quote.high %> %</td>
-                        <td scope="row"><%= quote.low %> %</td>
-                      </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
+          <h1>Most Active Stocks</h1>
+          <div>Date: <%= Date.today.strftime("%B %d, %Y") %></div>
+          <div>Time: <%= Time.now.strftime("%I:%M %p") %></div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Company</th>
+                <th scope="col">Open Price</th>
+                <th scope="col">Close Price</th>
+                <th scope="col">Percent Change</th>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+              </tr>
+              </thead>
+              <tbody>
+                <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
+                <tr>
+                  <td scope="row"><%= index + 1 %></td>
+                  <td scope="row"><%= quote.symbol %></td>
+                  <td scope="row"><%= quote.company_name %></td>
+                  <td scope="row">$ <%= quote.open %></td>
+                  <td scope="row">$ <%= quote.close %></td>
+                  <td scope="row"><%= quote.change_percent %> %</td>
+                  <td scope="row"><%= quote.high %> %</td>
+                  <td scope="row"><%= quote.low %> %</td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
         </main>
     </div>
 </div>
