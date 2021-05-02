@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row min-vh-100 flex-column flex-md-row">
+        <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                <div class="collapse navbar-collapse ">
+                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link pl-0 text-nowrap" href="#">
+                            <i class="fa fa-bullseye fa-fw"></i> 
+                            <span class="font-weight-bold">Stock Trading App</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Home', root_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <% if current_user.has_role?(:broker) %>
+                              <%= link_to 'Portfolio', broker_stocks_path, class: "nav-link px-sm-0 px-2", id: "broker" %>
+                            <% elsif current_user.has_role?(:buyer) %>
+                              <%= link_to 'Portolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2", id: "buyer" %>
+                            <% elsif current_user.has_role?(:admin) %>
+                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2" %>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col bg-faded py-3 flex-grow-1">
+          <div class="center">
+                <div class="search-container">
+                    <%= form_tag(home_search_path, :method => "get", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
+                        <%= submit_tag "Search", class: 'btn btn-default' do %>
+                        <% end %>
+                    <% end %>
+                    </div>
+                    <br>
+                    <div>
+                        <% unless params[:search].blank? %>
+                        <% quote = @client.quote(params[:search]) %>
+                        <p>Ticker: <%= quote.symbol %></p>
+                        <p>Company Name: <%= quote.company_name %></p>
+                        <p>Latest Price: $ <%= quote.latest_price %></p>
+                        <p>Percent Change: <%= quote.change_percent %> %</p>
+                        <% end %>
+                    </div>
+                </div>
+        </main>
+    </div>
+</div>

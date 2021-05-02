@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row min-vh-100 flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
@@ -6,17 +7,17 @@
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li class="nav-item">
                             <a class="nav-link pl-0 text-nowrap" href="#">
-                            <i class="fa fa-bullseye fa-fw"></i>
+                            <i class="fa fa-bullseye fa-fw"></i> 
                             <span class="font-weight-bold">Stock Trading App</span></a>
                         </li>
                         <li class="nav-item">
                             <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Buy Stock', new_buyers_stock_path, class: "nav-link px-sm-0 px-2" %>
+                            <%= link_to 'Search', home_search_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'View Transactions', broker_transactions_index_path, class: "nav-link px-sm-0 px-2" %>
+                            <%= link_to 'Portfolio', broker_stocks_index_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
                         <li class="nav-item">
                             <%= link_to 'Update Profile', edit_user_registration_path, class: "nav-link px-sm-0 px-2" %>
@@ -31,25 +32,26 @@
             </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Buyer's Stocks</h1>
+          <h1>Broker's Transactions</h1>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
+                <th scope="col">#</th>
                 <th scope="col">Ticker</th>
                 <th scope="col">Company</th>
                 <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Amount</th>
+                <th scope="col">Date Bought</th>
+                
               </tr>
             </thead>
-            <tbody>
-              <% @buyers_stocks.each do |stock| %>
+              <% @broker_transactions.each do |stock| %>
                 <tr scope="row"><%= stock.symbol %></tr>
                 <tr scope="row"><%= stock.company %></tr>
                 <tr scope="row"><%= stock.price %></tr>
                 <tr scope="row"><%= stock.quantity %></tr>
-                <tr scope="row"><%= stock.amount %></tr>
+                <tr scope="row"></tr>
               <% end %>
+            <tbody>
             </tbody>
           <table>
         </main>
