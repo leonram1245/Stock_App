@@ -19,18 +19,18 @@
     <% end %>
 
     <div class="field">
-        <%= form.label :ticker %>
-        <%= form.text_field :ticker, value: "#{quote.symbol}" %>
+        <% form.label :ticker %>
+        <% form.text_field :ticker, value: "#{quote.symbol}" %>
     </div>
 
     <div class="field">
-        <%= form.label :company %>
-        <%= form.text_field :company, value: "#{quote.company_name}" %>
+        <% form.label :company %>
+        <% form.text_field :company, value: "#{quote.company_name}" %>
     </div>
 
     <div class="field">
-        <%= form.label :price %>
-        <%= form.number_field :price, value: "#{quote.latest_price}".to_f %>
+        <% form.label :price %>
+        <% form.number_field :price, value: "#{quote.latest_price}".to_f %>
     </div>
 
     <div class="field">
@@ -39,8 +39,8 @@
     </div>
 
     <div class="field">
-        <%= form.label :amount %>
-        <%= form.number_field :amount %>
+        <% form.label :amount %>
+        <% form.number_field :amount %>
     </div>
 
     <div class="submit">
