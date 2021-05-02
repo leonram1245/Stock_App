@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row min-vh-100 flex-column flex-md-row">
+        <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                <div class="collapse navbar-collapse ">
+                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link pl-0 text-nowrap" href="#">
+                            <i class="fa fa-bullseye fa-fw"></i>
+                            <span class="font-weight-bold">Stock Trading App</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Portfolio', broker_stocks_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'View Transactions', broker_transactions_index_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col bg-faded py-3 flex-grow-1">
+          <div class="form-group">
+            <p id="notice"><%= notice %></p>
+            <div class="form-group">
+                <strong>Symbol:</strong>
+                <%= @broker_stock.ticker %>
+            </div>
+            <div class="form-group">
+                <strong>Company:</strong>
+                <%= @broker_stock.company %>
+            </div>
+            <div class="form-group">
+                <strong>Price:</strong>
+                <%= @broker_stock.price %>
+            </div>
+            <div class="form-group">
+                <strong>Quantity:</strong>
+                <%= @broker_stock.quantity %>
+            </div>
+            <div class="form-group">
+                <strong>Amount:</strong>
+                <%= @broker_stock.amount %>
+            </div>
+            </div>
+        </main>
+    </div>
+</div>
