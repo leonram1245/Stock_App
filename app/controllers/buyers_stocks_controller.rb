@@ -1,5 +1,5 @@
 class BuyersStocksController < ApplicationController
-  before_action :set_buyers_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_buyers_stock, only: %i[ show edit update destroy]
   
   def index
     @buyers_stocks = BuyersStock.all
@@ -23,7 +23,7 @@ class BuyersStocksController < ApplicationController
         format.html { redirect_to @buyers_stock, notice: "Buyer's Stock successfully created!" }
         format.json { render :show, status: :created, location: @buyers_stock }
       else
-        format.html { render.new }
+        format.html { render :new }
         format.json { render json: @buyers_stock.errors, status: :unprocessable_entity }
       end
     end
