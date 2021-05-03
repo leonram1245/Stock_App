@@ -5,14 +5,12 @@
                 <div class="collapse navbar-collapse ">
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li class="nav-item">
-                            <a class="nav-link pl-0 text-nowrap" href="#">
-                            <i class="fa fa-bullseye fa-fw"></i> 
-                            <span class="font-weight-bold">Stock Trading App</span></a>
+                            <div class="nav-link pl-0 text-nowrap">
+                            <i class="fas fa-chart-line"></i> 
+                            <span class="font-weight-bold">Stock Trading App</span></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link pl-0" href="#">
-                            <i class="fa fa-book fa-fw"></i> 
-                            <span class="d-none d-md-inline">Home</span></a>
+                            <% link_to "Home", root_path %>
                         </li>
                         <li class="nav-item">
                             <% if current_user.has_role?(:broker) %>
@@ -20,7 +18,7 @@
                             <% elsif current_user.has_role?(:buyer) %>
                               <%= link_to 'Portolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2", id: "buyer" %>
                             <% elsif current_user.has_role?(:admin) %>
-                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2" %>
+                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2", id: "admin" %>
                             <% end %>
                         </li>
                         <li class="nav-item">
@@ -29,40 +27,50 @@
                         <li class="nav-item">
                             <%= link_to 'About', home_about_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
+                        <li class="nav-item">
+                            <%= link_to 'Update Profile', edit_user_registration_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <% if user_signed_in? %>
+                              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link px-sm-0 px-2" %><br>
+                            <% end %>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Top Ten Stocks</h1>
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Symbol</th>
-                      <th scope="col">Company</th>
-                      <th scope="col">Open Price</th>
-                      <th scope="col">Close Price</th>
-                      <th scope="col">Percent Change</th>
-                      <th scope="col">High</th>
-                      <th scope="col">Low</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
-                      <tr>
-                        <td scope="row"><%= index + 1 %></td>
-                        <td scope="row"><%= quote.symbol %></td>
-                        <td scope="row"><%= quote.company_name %></td>
-                        <td scope="row">$ <%= quote.open %></td>
-                        <td scope="row">$ <%= quote.close %></td>
-                        <td scope="row"><%= quote.change_percent %> %</td>
-                        <td scope="row"><%= quote.high %> %</td>
-                        <td scope="row"><%= quote.low %> %</td>
-                      </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
+          <h1>Most Active Stocks</h1>
+          <div>Date: <%= Date.today.strftime("%B %d, %Y") %></div>
+          <div>Time: <%= Time.now.strftime("%I:%M %p") %></div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Company</th>
+                <th scope="col">Open Price</th>
+                <th scope="col">Close Price</th>
+                <th scope="col">Percent Change</th>
+                <th scope="col">High</th>
+                <th scope="col">Low</th>
+              </tr>
+              </thead>
+              <tbody>
+                <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
+                <tr>
+                  <td scope="row"><%= index + 1 %></td>
+                  <td scope="row"><%= quote.symbol %></td>
+                  <td scope="row"><%= quote.company_name %></td>
+                  <td scope="row">$ <%= quote.open %></td>
+                  <td scope="row">$ <%= quote.close %></td>
+                  <td scope="row"><%= quote.change_percent %> %</td>
+                  <td scope="row"><%= quote.high %> %</td>
+                  <td scope="row"><%= quote.low %> %</td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
         </main>
     </div>
 </div>

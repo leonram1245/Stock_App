@@ -23,19 +23,27 @@
             </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Buy Stocks</h1>
-          <div class="center">
-            <div class="search-container">
-                <%= form_tag(new_broker_stock_path, :method => "get", id: "search-form") do %>
-                    <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
-                    <%= submit_tag "Search", class: 'btn btn-primary' %>
-                <% end %>
+          <div class="form-group">
+            <p id="notice"><%= notice %></p>
+            <div class="form-group">
+                <strong>Symbol:</strong>
+                <%= @broker_stock.ticker %>
             </div>
-            <br>
-            <div>
-                <% unless params[:search].blank? %>
-                <%= render 'form', broker_stock: @broker_stock %>
-                <% end %>
+            <div class="form-group">
+                <strong>Company:</strong>
+                <%= @broker_stock.company %>
+            </div>
+            <div class="form-group">
+                <strong>Price:</strong>
+                <%= @broker_stock.price %>
+            </div>
+            <div class="form-group">
+                <strong>Quantity:</strong>
+                <%= @broker_stock.quantity %>
+            </div>
+            <div class="form-group">
+                <strong>Amount:</strong>
+                <%= @broker_stock.amount %>
             </div>
           </div>
         </main>

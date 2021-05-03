@@ -1,26 +1,27 @@
 class BuyersStocksController < ApplicationController
-  before_action :set_buyers_stock, only: %i[ show edit update destroy]
+  before_action :set_buyers_stock, only: %i[ show edit create update destroy ]
   
   def index
-    @buyers_stocks = BuyersStock.all
+    @buyers_stocks = current_user.buyers_stocks
   end
 
   def show
   end
 
   def new
-    @buyers_stock = BuyersStock.new
+    @buyers_stock = current_user.buyers_stocks.build
+    @brokers = User.all.where(role: 'broker')
   end
 
   def edit
   end
 
   def create
-    @buyers_stock = BuyersStock.new(buyers_stock_params)
+    @buyers_stock = current_user.buyers_stocks.build(buyers_stock_params)
 
     respond_to do |format|
       if @buyers_stock.save
-        format.html { redirect_to @buyers_stock, notice: "Buyer's Stock successfully created!" }
+        format.html { redirect_to @buyers_stock, notice: "Successfully bought Stock from Broker" }
         format.json { render :show, status: :created, location: @buyers_stock }
       else
         format.html { render :new }
@@ -52,11 +53,11 @@ class BuyersStocksController < ApplicationController
   private
 
     def set_buyers_stock
-      @buyers_stock = BuyersStock.find(params[:id])
+      @buyers_stock = current_user.buyers_stocks.find(params[:id])
     end
 
     def buyers_stock_params
-      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount)
+      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount, :user_id, :broker_stock_id)
     end
 end
   

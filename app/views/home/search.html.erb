@@ -5,9 +5,9 @@
                 <div class="collapse navbar-collapse ">
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li class="nav-item">
-                            <a class="nav-link pl-0 text-nowrap" href="#">
-                            <i class="fa fa-bullseye fa-fw"></i> 
-                            <span class="font-weight-bold">Stock Trading App</span></a>
+                            <div class="nav-link pl-0 text-nowrap">
+                            <i class="fas fa-chart-line"></i> 
+                            <span class="font-weight-bold">Stock Trading App</span></div>
                         </li>
                         <li class="nav-item">
                             <%= link_to 'Home', root_path, class: "nav-link px-sm-0 px-2" %>
@@ -30,7 +30,7 @@
                 <div class="search-container">
                     <%= form_tag(home_search_path, :method => "get", id: "search-form") do %>
                         <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
-                        <%= submit_tag "Search", class: 'btn btn-default' do %>
+                        <%= submit_tag "Search", class: 'btn btn-primary' do %>
                         <% end %>
                     <% end %>
                     </div>
@@ -38,10 +38,14 @@
                     <div>
                         <% unless params[:search].blank? %>
                         <% quote = @client.quote(params[:search]) %>
-                        <p>Ticker: <%= quote.symbol %></p>
+                        <% income_statements = @client.income(params[:search]) %>
+                        <% income = income_statements.first %>
+                        <p>Symbol: <%= quote.symbol %></p>
                         <p>Company Name: <%= quote.company_name %></p>
                         <p>Latest Price: $ <%= quote.latest_price %></p>
                         <p>Percent Change: <%= quote.change_percent %> %</p>
+                        <p>Total Revenue: <%= income.total_revenue_dollar %></p>
+                        <p>Gross Profit: <%= income.gross_profit_dollar%></p>
                         <% end %>
                     </div>
                 </div>
