@@ -17,7 +17,7 @@ class BrokerStocksController < ApplicationController
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
       endpoint: 'https://sandbox.iexapis.com/v1'
-    )
+    ) 
   end
 
   def edit
@@ -28,7 +28,7 @@ class BrokerStocksController < ApplicationController
     
     respond_to do |format|
       if @broker_stock.save
-        format.html { redirect_to @broker_stock, notice: 'Stock successfully created!' }
+        format.html { redirect_to @broker_stock, notice: 'Successfully bought Stock!' }
         format.json { render :show, status: :created, location: @broker_stock }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class BrokerStocksController < ApplicationController
   def update
     respond_to do |format|
       if @broker_stock.update(broker_stock_params)
-        format.html { redirect_to @broker_stock, notice: 'Stock succesfully updated!' }
+        format.html { redirect_to @broker_stock, notice: 'Broker stock successfully updated!' }
         format.json { render :show, status: :ok, location: @broker_stock }
       else
         format.html { render :edit }
@@ -52,7 +52,7 @@ class BrokerStocksController < ApplicationController
   def destroy
     @broker_stock.destroy
     respond_to do |format|
-      format.html { redirect_to broker_stocks_path, notice: 'Stock successfully destroyed!' }
+      format.html { redirect_to broker_stocks_path, notice: 'Broker stock successfully deleted!' }
       format.json { head :no_content }
     end
   end
