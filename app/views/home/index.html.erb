@@ -5,14 +5,12 @@
                 <div class="collapse navbar-collapse ">
                     <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li class="nav-item">
-                            <a class="nav-link pl-0 text-nowrap" href="#">
-                            <i class="fa fa-bullseye fa-fw"></i> 
-                            <span class="font-weight-bold">Stock Trading App</span></a>
+                            <div class="nav-link pl-0 text-nowrap">
+                            <i class="fas fa-chart-line"></i> 
+                            <span class="font-weight-bold">Stock Trading App</span></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link pl-0" href="#">
-                            <i class="fa fa-book fa-fw"></i> 
-                            <span class="d-none d-md-inline">Home</span></a>
+                            <% link_to "Home", root_path %>
                         </li>
                         <li class="nav-item">
                             <% if current_user.has_role?(:broker) %>
@@ -20,7 +18,7 @@
                             <% elsif current_user.has_role?(:buyer) %>
                               <%= link_to 'Portolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2", id: "buyer" %>
                             <% elsif current_user.has_role?(:admin) %>
-                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2" %>
+                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2", id: "admin" %>
                             <% end %>
                         </li>
                         <li class="nav-item">
@@ -28,6 +26,14 @@
                         </li>
                         <li class="nav-item">
                             <%= link_to 'About', home_about_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Update Profile', edit_user_registration_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <% if user_signed_in? %>
+                              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link px-sm-0 px-2" %><br>
+                            <% end %>
                         </li>
                     </ul>
                 </div>
