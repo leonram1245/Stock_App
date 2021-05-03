@@ -1,4 +1,3 @@
-
 <% quote = @client.quote(params[:search]) %>
 <p>Ticker: <%= quote.symbol %></p>
 <p>Company Name: <%= quote.company_name %></p>
@@ -17,34 +16,33 @@
         </ul>
     </div>
     <% end %>
-
-    <div class="field">
-        <% form.label :ticker %>
-        <% form.text_field :ticker, value: "#{quote.symbol}" %>
-    </div>
-
-    <div class="field">
-        <% form.label :company %>
-        <% form.text_field :company, value: "#{quote.company_name}" %>
-    </div>
-
-    <div class="field">
-        <% form.label :price %>
-        <% form.number_field :price, value: "#{quote.latest_price}".to_f %>
-    </div>
-
     <div class="field">
         <%= form.label :quantity %>
         <%= form.number_field :quantity %>
     </div>
 
     <div class="field">
-        <% form.label :amount %>
-        <% form.number_field :amount %>
+        <%= form.label :amount %>
+        <%= form.number_field :amount %>
     </div>
 
     <div class="submit">
         <%= form.submit "Buy Stock" %>
+    </div>
+
+    <div class="field invisible">
+        <%= form.label :ticker %>
+        <%= form.text_field :ticker, value: "#{quote.symbol}" %>
+    </div>
+
+    <div class="field invisible">
+        <%= form.label :company %>
+        <%= form.text_field :company, value: "#{quote.company_name}" %>
+    </div>
+
+    <div class="field invisible">
+        <%= form.label :price %>
+        <%= form.number_field :price, value: "#{quote.latest_price}" %>
     </div>
 
 <% end %> 
