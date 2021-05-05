@@ -8,7 +8,7 @@ class  ConfirmationsController < Devise::ConfirmationsController
       if current_user.has_role? :admin
         rails_admin_path
       elsif current_user.has_role? :buyer
-        buyer_stocks_path
+        buyers_stocks_path
       elsif current_user.has_role? :broker
         broker_stocks_path
     end

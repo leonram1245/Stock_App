@@ -2,7 +2,6 @@ class BrokerStocksController < ApplicationController
   before_action :set_broker_stock, only: %i[ show edit update destroy ]
   def index
     @broker_stocks = current_user.broker_stocks
-
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
       endpoint: 'https://sandbox.iexapis.com/v1'
