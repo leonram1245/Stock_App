@@ -11,7 +11,117 @@ RailsAdmin.config do |config|
   ## == CancanCan ==
   config.authorize_with :cancancan
 
+  config.model User do 
+    list do 
+      field :email
+      field :confirmation_token
+      field :confirmed_at
+      field :roles do
+       searchable :name
+       queryable :true
+      end
+      end
+    show do
+      field :email
+      field :confirmation_token
+      field :confirmed_at
+      field :roles
+    end
+    edit do
+      field :broker_email_confirmed do
+        pretty_value do
+         if bindings[:object].broker_email_confirmed==false
+             %{<span style="color:blank;" >ON</span>}.html_safe
+           else
+             %{<span style="color:blank;" >OFF</span>}.html_safe
+         end
+       end
+      end 
+      field :password
+      field :password_confirmation  
+    end
+  end
 
+  config.model BrokerStock do 
+    list do 
+      field :id
+      field :user
+      field :ticker
+      field :company
+      field :price
+      field :quantity
+  end
+    show do
+      field :id
+      field :user
+      field :ticker
+      field :company
+      field :price
+      field :quantity
+    end
+end
+
+  config.model PendingBrokerAccount do
+  label "Manage User Accounts" 
+  list do
+    field :email
+    field :broker_email_confirmed
+    field :roles do
+     searchable :name
+     queryable :true
+    end
+    end
+  show do
+    field :email
+    field :broker_email_confirmed
+    field :roles
+  end
+  edit do
+    field :broker_email_confirmed do
+      pretty_value do
+       if bindings[:object].broker_email_confirmed==false
+           %{<span style="color:blank;" >ON</span>}.html_safe
+         else
+           %{<span style="color:blank;" >OFF</span>}.html_safe
+       end
+     end
+    end 
+    field :password
+    field :password_confirmation  
+  end
+end
+
+config.model ApprovedBrokerAccount do
+  list do
+    field :email
+    field :broker_email_confirmed
+    field :roles do
+     searchable :name
+     queryable :true
+    end
+    end
+  show do
+    field :email
+    field :broker_email_confirmed
+    field :roles
+  end
+  edit do
+    field :broker_email_confirmed do
+      pretty_value do
+       if bindings[:object].broker_email_confirmed==false
+           %{<span style="color:blank;" >ON</span>}.html_safe
+         else
+           %{<span style="color:blank;" >OFF</span>}.html_safe
+       end
+     end
+    end 
+    field :password
+    field :password_confirmation  
+  end
+end
+
+
+    
   ## == Pundit ==
   # config.authorize_with :pundit
 

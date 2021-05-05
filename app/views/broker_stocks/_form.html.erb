@@ -1,5 +1,5 @@
 <% quote = @client.quote(params[:search]) %>
-<p>Ticker: <%= quote.symbol %></p>
+<p>Symbol: <%= quote.symbol %></p>
 <p>Company Name: <%= quote.company_name %></p>
 <p>Latest Price: $ <%= quote.latest_price %></p>
 <p>Percent Change: <%= quote.change_percent %> %</p>
@@ -19,10 +19,13 @@
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
+<<<<<<< HEAD
   <div class="field">
     <%= form.label :amount %>
     <%= form.number_field :amount%>
   </div>
+=======
+>>>>>>> origin/eds-branch
   <div class="submit">
     <%= form.submit "Buy Stock" %>
   </div>
