@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row min-vh-100 flex-column flex-md-row">
+    <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+      <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+        <div class="collapse navbar-collapse ">
+          <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+                <div class="nav-link pl-0 text-nowrap">
+                <i class="fas fa-chart-line"></i> 
+                <span class="font-weight-bold">Stock Trading App</span></div>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Portfolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="col bg-faded py-3 flex-grow-1">
+        <div class="form-group">
+        <p id="notice"><%= notice %></p>
+        <div class="form-group">
+            <strong>Symbol:</strong>
+            <%= @buyers_stock.ticker %>
+        </div>
+        <div class="form-group">
+            <strong>Company:</strong>
+            <%= @buyers_stock.company %>
+        </div>
+        <div class="form-group">
+            <strong>Price:</strong>
+            $ <%= @buyers_stock.price %>
+        </div>
+        <div class="form-group">
+            <strong>Quantity:</strong>
+            <%= @buyers_stock.quantity %>
+        </div>
+        </div>
+    </main>
+  </div>
+</div>

@@ -20,18 +20,15 @@
     <%= form.number_field :quantity %>
   </div>
   <div class="submit">
-    <%= form.submit "Buy Stock" %>
+    <%= form.submit "Buy Stock", class: "btn btn-success" %>
   </div>
   <div class="field invisible">
-    <%= form.label :ticker %>
     <%= form.text_field :ticker, value: "#{quote.symbol}" %>
   </div>
   <div class="field invisible">
-    <%= form.label :company %>
     <%= form.text_field :company, value: "#{quote.company_name}" %>
   </div>
   <div class="field invisible">
-    <%= form.label :price %>
     <%= form.number_field :price, value: "#{quote.latest_price}" %>
   </div>
 <% end %> 

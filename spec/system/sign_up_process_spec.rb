@@ -11,9 +11,8 @@ RSpec.describe 'Sign up process', type: :feature do
       fill_in 'user_email', with: valid_attributes[:email]
       fill_in 'user_password', with: valid_attributes[:password]
       fill_in 'user_password_confirmation', with: valid_attributes[:password_confirmation]
-      # fill_in 'user_roles', with: valid_attributes[roles: []]
 
-      click_button 'Sign up'
+      click_button 'Sign Up'
     end
 
     expect(page.current_path).to eq user_registration_path
