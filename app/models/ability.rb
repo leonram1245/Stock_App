@@ -9,7 +9,7 @@ class Ability
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :manage, :dashboard         # allow access to dashboard
     elsif user.has_role? :buyer
-      can :manage, Buyers_stock
+      can :manage, BuyersStock
     elsif user.has_role? :broker
       can :manage, Stock
     end
