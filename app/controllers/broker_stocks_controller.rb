@@ -65,6 +65,6 @@ class BrokerStocksController < ApplicationController
     end
 
     def broker_stock_params
-      params.require(:broker_stock).permit(:price, :ticker, :company, :quantity, :amount, :user_id)
+      params.require(:broker_stock).permit(:price, :ticker, :company, :quantity, :user_id)
     end
 end
