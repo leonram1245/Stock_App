@@ -38,8 +38,10 @@
                 <td scope="row"><%= stock.company %></td>
                 <td scope="row">$ <%= stock.price %></td>
                 <td scope="row"><%= stock.quantity %></td>
-                <% if stock.price != nil && stock.quantity != nil %>
+                <% if stock.quantity != nil %>
                 <td scope="row">$ <%= stock.price * stock.quantity %></td>
+                <% else %>
+                <td scope="row">$ <%= stock.price %>
                 <% end %>
               </tr>
               <% end %>

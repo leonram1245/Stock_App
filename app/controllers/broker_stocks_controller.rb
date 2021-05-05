@@ -1,5 +1,5 @@
 class BrokerStocksController < ApplicationController
-  before_action :set_broker_stock, only: %i[ show edit update destroy ]
+  before_action :set_broker_stock, only: %i[ show ]
   
   def index
     @broker_stocks = current_user.broker_stocks
@@ -21,8 +21,6 @@ class BrokerStocksController < ApplicationController
     ) 
   end
 
-  def edit
-  end
 
   def create
     @broker_stock = current_user.broker_stocks.build(broker_stock_params)
@@ -38,25 +36,6 @@ class BrokerStocksController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @broker_stock.update(broker_stock_params)
-        format.html { redirect_to @broker_stock, notice: 'Broker stock successfully updated!' }
-        format.json { render :show, status: :ok, location: @broker_stock }
-      else
-        format.html { render :edit }
-        format.json { render json: @broker_stock.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @broker_stock.destroy
-    respond_to do |format|
-      format.html { redirect_to broker_stocks_path, notice: 'Broker stock successfully deleted!' }
-      format.json { head :no_content }
-    end
-  end
 
   private
 
