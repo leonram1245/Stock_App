@@ -1,5 +1,5 @@
 class BuyersStocksController < ApplicationController
-  before_action :set_buyers_stock, only: %i[ show edit create update destroy ]
+  before_action :set_buyers_stock, only: %i[ show edit update destroy ]
   
   def index
     @buyers_stocks = current_user.buyers_stocks
@@ -57,7 +57,7 @@ class BuyersStocksController < ApplicationController
     end
 
     def buyers_stock_params
-      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :amount, :user_id, :broker_stock_id)
+      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :user_id, :broker_stock_id)
     end
 end
   
