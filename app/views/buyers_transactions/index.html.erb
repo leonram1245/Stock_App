@@ -44,13 +44,13 @@
                 <th scope="col">Broker</th>
               </tr>
             </thead>
-              <% @buyers_transactions.each_with_index do |stock, index| %>
+              <% @broker_transactions.each do |stock| %>
               <tr>
                 <td scope="row"><%= index + 1 %></td>
-                <td scope="row"><%= stock.symbol %></td>
+                <td scope="row"><%=stock.symbol %></td>
                 <td scope="row"><%= stock.company %></td>
-                <td scope="row"><%= stock.price %></td>
-                <td scope="row"><%= stock.quantity %></td>
+                <td scope="row"><%= stock.broker_stock.price %></td>
+                <td scope="row"><%= stock.broker_stock.quantity %></td>
                 <td scope="row"></td>
                 <td scope="row"></td>
               </tr>

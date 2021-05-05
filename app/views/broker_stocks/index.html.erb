@@ -22,6 +22,7 @@
                 </div>
             </nav>
         </aside>
+ 
         <main class="col bg-faded py-3 flex-grow-1">
           <h1>Broker's Stocks</h1>
           <table class="table table-striped">
@@ -40,12 +41,12 @@
               <tr>
                 <td scope="row"><%= stock.ticker %></td>
                 <td scope="row"><%= stock.company %></td>
-                <td scope="row">$ <%= stock.price %></td>
+                <td scope="row">$ <%=number_with_precision(stock.price, :precision =>2, :delimiter =>',')%></td>
                 <td scope="row"><%= stock.quantity %></td>
-                <td scope="row">$ <%= stock.amount %></td>
+                <td scope="row">$<%=number_with_precision((stock.quantity * stock.price), :precision =>2, :delimiter =>',') %></td>
               </tr>
               <% end %>
-          <%elsif current_user.has_role? :buyer%> 
+            <%elsif current_user.has_role? :buyer%> 
                <tr>
                 <th scope="col">Ticker</th>
                 <th scope="col">Company</th>
@@ -60,9 +61,9 @@
               <tr>
                 <td scope="row"><%= stock.ticker %></td>
                 <td scope="row"><%= stock.company %></td>
-                <td scope="row">$ <%= stock.price %></td>
+                <td scope="row">$ <%=number_with_precision(stock.price, :precision =>2, :delimiter =>',') %></td>
                 <td scope="row"><%= stock.quantity %></td>
-                <td scope="row">$<%= stock.amount %></td>
+                <td scope="row">$<%=number_with_precision((stock.quantity * stock.price), :precision =>2, :delimiter =>',') %></td>
                 <td scope="row"><%= stock.user.email %></td>
               </tr>
               <% end %>

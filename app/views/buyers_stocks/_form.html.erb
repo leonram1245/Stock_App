@@ -1,0 +1,31 @@
+<%= form_with(model: buyers_stock) do |form| %>
+  <% if broker_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(broker_stock.errors.count, "error") %> , please check your inputs </h2>
+        <ul>
+          <% broker_stock.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div class="submit">
+    <%= form.submit "Buy Stock" %>
+  </div>
+  <div class="field">
+    <%= form.label :ticker %>
+    <%= form.text_field :ticker, value: "#{@broker_stock.ticker}" %>
+  </div>
+  <div class="field">
+    <%= form.label :company %>
+    <%= form.text_field :company, value: "#{@broker_stock.company}" %>
+  </div>
+  <div class="field invisible">
+    <%= form.label :price %>
+    <%= form.number_field :price, value: "#{@broker_stock.price}" %>
+  </div>
+<% end %> 
