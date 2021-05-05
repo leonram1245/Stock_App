@@ -10,7 +10,7 @@
                             <span class="font-weight-bold">Stock Trading App</span></div>
                         </li>
                         <li class="nav-item">
-                            <% link_to "Home", root_path %>
+                            <% link_to "Home", home_index_path %>
                         </li>
                         <li class="nav-item">
                             <% if current_user.has_role?(:broker) %>
@@ -30,7 +30,7 @@
                         <li class="nav-item">
                             <%= link_to 'Update Profile', edit_user_registration_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="sign_out">
                             <% if user_signed_in? %>
                               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link px-sm-0 px-2" %><br>
                             <% end %>
@@ -58,7 +58,7 @@
               </thead>
               <tbody>
                 <% @client.stock_market_list(:mostactive).each_with_index do |quote, index| %>
-                <tr>
+                <tr class="text-center">
                   <td scope="row"><%= index + 1 %></td>
                   <td scope="row"><%= quote.symbol %></td>
                   <td scope="row"><%= quote.company_name %></td>

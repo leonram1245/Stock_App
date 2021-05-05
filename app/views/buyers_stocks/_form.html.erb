@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= form_with(model: buyers_stock) do |form| %>
   <% if broker_stock.errors.any? %>
     <div id="error_explanation">
@@ -29,3 +30,69 @@
     <%= form.number_field :price, value: "#{@broker_stock.price}" %>
   </div>
 <% end %> 
+=======
+
+<%= form_with(model: buyers_stock) do |form| %>
+<% if buyers_stock.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
+        <ul>
+            <% buyers_stock.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Company</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Broker</th>
+        <th class="col-md-4"><th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @broker_stocks.each do |stock| %>
+      <tr>
+        <td scope="col">
+          <%= stock.ticker %>
+          <div class="field invisible">
+            <%= form.text_field :ticker, value: "#{stock.ticker}" %>
+          </div>
+        </td>
+        <td scope="col">
+          <%= stock.company %>
+          <div class="field invisible">
+            <%= form.text_field :company, value: "#{stock.company}" %>
+          </div>
+        </td>
+        <td scope="col">
+          $ <%= stock.price %>
+          <div class="field invisible">
+            <%= form.number_field :price, value: "#{stock.price}" %>
+          </div>
+        </td>
+        <td scope="col">
+          <%= stock.quantity %>
+          <div class="field invisible">
+            <%= form.number_field :quantity, value: "#{stock.quantity}" %>
+          </div>
+        </td>
+        <td scope="col">
+          <%= stock.user.email %>
+        </td>
+        <td scope="col">
+          <div class="submit">
+          <%= form.submit "Buy", class: "btn btn-success" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+<% end %> 
+ 
+>>>>>>> origin/eds-branch

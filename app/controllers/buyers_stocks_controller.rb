@@ -1,5 +1,5 @@
 class BuyersStocksController < ApplicationController
-  before_action :set_buyers_stock, only: %i[ show edit update destroy ]
+  before_action :set_buyers_stock, only: %i[ show ]
   
   def index
     @buyers_stocks = current_user.buyers_stocks
@@ -10,8 +10,12 @@ class BuyersStocksController < ApplicationController
     @buyers_stock = current_user.buyers_stocks.build
     @broker_stocks = BrokerStock.all
   end
+<<<<<<< HEAD
   def edit
   end
+=======
+
+>>>>>>> origin/eds-branch
   def create
     @buyers_stock = current_user.buyers_stocks.build(buyers_stock_params)
     respond_to do |format|
@@ -24,6 +28,7 @@ class BuyersStocksController < ApplicationController
       end
     end
   end
+<<<<<<< HEAD
   def update
     respond_to do |format|
       if @buyers_stock.update(buyers_stock_params)
@@ -42,6 +47,9 @@ class BuyersStocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+=======
+
+>>>>>>> origin/eds-branch
   private
     def set_buyers_stock
       @buyers_stock = current_user.buyers_stocks.find(params[:id])
