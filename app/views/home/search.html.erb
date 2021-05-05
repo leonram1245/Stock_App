@@ -28,10 +28,9 @@
         <main class="col bg-faded py-3 flex-grow-1">
           <div class="center">
                 <div class="search-container">
-                    <%= form_tag(home_search_path, :method => "get", id: "search-form") do %>
-                        <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control' %>
-                        <%= submit_tag "Search", class: 'btn btn-primary' do %>
-                        <% end %>
+                    <%= form_tag(home_search_path, :method => "get", class: "form-inline", id: "search-form") do %>
+                        <%= text_field_tag :search, params[:search], placeholder: "Enter a Symbol", class: 'form-control mr-md-2' %>
+                        <%= submit_tag "Search", class: 'btn btn-primary my-2 my-sm-0' %>
                     <% end %>
                     </div>
                     <br>
