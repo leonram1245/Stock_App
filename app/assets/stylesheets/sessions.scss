@@ -16,7 +16,7 @@ body{
   }
   
   .img-left{
-    width: 50%;
+    width: 55%;
     background: image_url('logopic.png') center;
     background-size: cover;
   }
@@ -37,11 +37,11 @@ body{
     width: 100%;
     height: 45px;
     padding-left: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     box-shadow: none;
     border: 1px solid #00000020;
-    border-radius: 50px;
+    border-radius: 5px;
     outline: none;
     background: transparent;
   }
@@ -104,29 +104,3 @@ body{
     border: 0;
     font-weight: bold;
   }
-  
-  .form-box .btn-facebook{
-    background: #4866a8;
-  }
-  
-  .form-box .btn-google{
-    background: #da3f34;
-  }
-  
-  .form-box .btn-twitter{
-    background: #33ccff;
-  }
-  
-  .form-box .btn-facebook:hover{
-    background: #3d578f;
-  }
-  
-  .form-box .btn-google:hover{
-    background: #bf3b31;
-  }
-  
-  .form-box .btn-twitter:hover{
-    background: #2eb7e5;
-  }
-  
-  
