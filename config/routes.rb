@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'home/index'
+  get 'home/search'
+  get 'home/about'
   get 'broker_transactions/index'
   get 'buyers_transactions/index'
   get 'broker_stocks/index'
@@ -9,17 +13,8 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
-  root 'home#index'
-  get 'home/index'
-  get 'home/search'
-  get 'home/about'
-  
-  resources :broker_stocks do
-    resources :broker_transactions 
-  end
-  resources :buyers_stocks do
-    resources :buyers_transactions
-  end
+  resources :broker_stocks 
+  resources :buyers_stocks
 end
 
 
