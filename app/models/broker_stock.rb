@@ -3,6 +3,6 @@ class BrokerStock < ApplicationRecord
     belongs_to :user
     has_many :broker_transactions
     has_many :buyers_stocks
-    validates :price, :ticker, :company, :quantity, :amount, presence: true
+    validates :price, :ticker, :company, :quantity, presence: true
   end
 
