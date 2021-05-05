@@ -10,7 +10,6 @@ class BuyersStocksController < ApplicationController
 
   def new
     @buyers_stock = current_user.buyers_stocks.build
-    @brokers = User.all.where(role: 'broker')
     @broker_stocks = BrokerStock.all
   end
 
