@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row min-vh-100 flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
@@ -13,39 +14,50 @@
                             <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
                         </li>
                         <li class="nav-item">
-                            <%= link_to 'Buy Stock', new_broker_stock_path, class: "nav-link px-sm-0 px-2" %>
+                            <%= link_to 'Search', home_search_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Portfolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to 'Update Profile', edit_user_registration_path, class: "nav-link px-sm-0 px-2" %>
+                        </li>
+                        <li class="nav-item">
+                            <% if user_signed_in? %>
+                              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link px-sm-0 px-2" %><br>
+                            <% end %>
                         </li>
                     </ul>
                 </div>
             </nav>
         </aside>
- 
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Broker's Stocks</h1>
+          <h1>Buyer's Transactions</h1>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
+                <th scope="col">#</th>
                 <th scope="col">Ticker</th>
                 <th scope="col">Company</th>
                 <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total Amount</th>
+                <th scope="col">Date Bought</th>
+                <th scope="col">Broker</th>
               </tr>
             </thead>
-            <tbody>
-              <% @broker_stocks.each do |stock| %>
+              <% @broker_transactions.each do |stock| %>
               <tr>
-                <td scope="row"><%= stock.ticker %></td>
+                <td scope="row"><%= index + 1 %></td>
+                <td scope="row"><%=stock.symbol %></td>
                 <td scope="row"><%= stock.company %></td>
-                <td scope="row">$ <%=number_with_precision(stock.price, :precision =>2, :delimiter =>',')%></td>
-                <td scope="row"><%= stock.quantity %></td>
-                <% if stock.price != nil && stock.quantity != nil %>
-                <td scope="row">$ <%= stock.price * stock.quantity %></td>
-                <% end %>
+                <td scope="row"><%= stock.broker_stock.price %></td>
+                <td scope="row"><%= stock.broker_stock.quantity %></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
               </tr>
               <% end %>
+            <tbody>
             </tbody>
-          </table>
+          <table>
         </main>
     </div>
 </div>

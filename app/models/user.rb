@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   rolify
-  
+ 
   validates :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: { case_sensitive: false }
   has_many :broker_stocks, dependent: :destroy
