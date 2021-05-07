@@ -13,16 +13,8 @@ class Ability
       can :manage, :dashboard          
     elsif user.has_role? :buyer
       can :manage, BuyersStock
-      can :manage, BrokerStock
-      can :access, :rails_admin          
-      can :manage, :dashboard 
     elsif user.has_role? :broker
-      can :manage, User
-      can :manage, Role
       can :manage, BrokerStock
-      can :manage, BuyersStock
-      can :access, :rails_admin          
-      can :manage, :dashboard 
     end
   end
 end
