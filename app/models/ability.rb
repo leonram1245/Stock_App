@@ -6,6 +6,7 @@ class Ability
     user ||= User.new 
     if user.has_role? :admin
       can :manage, User
+      can :manage, Role
       can :read, BrokerStock
       can :read, BuyersStock
       can :access, :rails_admin          
