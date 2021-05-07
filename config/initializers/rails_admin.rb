@@ -45,7 +45,12 @@ RailsAdmin.config do |config|
   config.model BrokerStock do 
     list do 
       field :id
-      field :user
+      field :user 
+      field :email do
+        pretty_value do
+          bindings[:object].user&.email
+      end
+    end
       field :ticker
       field :company
       field :price
@@ -121,7 +126,7 @@ config.model ApprovedBrokerAccount do
 end
 
 
-    
+
   ## == Pundit ==
   # config.authorize_with :pundit
 
