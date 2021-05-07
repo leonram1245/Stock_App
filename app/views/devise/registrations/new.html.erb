@@ -1,0 +1,47 @@
+
+
+<%=stylesheet_link_tag "sessions"%>
+
+ 
+    <div class="container">
+    <div class="row px-3">
+      <div class="col-lg-10 col-xl-9 card flex-row mx-auto px-0">
+        <div class="img-left d-none d-md-flex"></div>
+
+        <div class="card-body">
+          <h4 class="title text-center mt-4">
+            Register an Account
+          </h4>
+          <%=simple_form_for(resource,  as: resource_name, defaults: { required: false }, url: registration_path(resource_name)) do |f| %>
+           <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-box px-3">
+            <div class="form-input">
+            <%= f.input:email, autofocus: true, autocomplete: "email",  placeholder:'enter your email' %>
+            </div>
+            <div class="form-input">
+             <%= f.input :password,input_html: { maxlength: 20 } , autocomplete: "current-password" , placeholder:'enter your password'%>     
+            </div>
+            <div class="form-input">
+             <%= f.input :password_confirmation, input_html: { maxlength: 20 } , placeholder:'confirm your password'%>     
+            </div>
+              <div>
+              Select your desired role:
+             <%= f.input :roles,as: :radio_buttons,collection:Role.where(name:['broker','buyer']), label:false,value_method: :name, required: true, checked:'broker' %>     
+              </div>
+            <div class="mt-3">
+             <%= f.submit "Sign Up",class:"btn btn-sm btn-primary btn-block text-uppercase"%>
+            </div>
+
+            <div class="text-right">
+           <%= render "devise/shared/links" %>
+
+         
+            </div>
+            </div>
+<% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

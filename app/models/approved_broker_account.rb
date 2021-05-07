@@ -1,0 +1,2 @@
+class ApprovedBrokerAccount < User
+end

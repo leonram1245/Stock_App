@@ -1,0 +1,2 @@
+class PendingBrokerAccount < User
+end
