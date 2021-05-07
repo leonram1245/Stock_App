@@ -120,7 +120,7 @@ Rails.application.configure do
   
 config.action_mailer.delivery_method = :smtp
 host = 'example.com' #replace with your own url
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+config.action_mailer.default_url_options = { :host => 'stockify25.herokuapp.com'  }
 
 
 config.action_mailer.perform_deliveries = true
