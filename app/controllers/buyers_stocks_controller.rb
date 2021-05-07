@@ -42,3 +42,4 @@ class BuyersStocksController < ApplicationController
       params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :user_id)
     end
 end
+
