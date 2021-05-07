@@ -35,7 +35,6 @@ class BrokerStocksController < ApplicationController
     end
   end
 
-
   private
 
     def set_broker_stock

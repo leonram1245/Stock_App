@@ -1,0 +1,2 @@
+module TransactionHistoriesHelper
+end

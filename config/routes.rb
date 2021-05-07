@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'pending_broker_accounts/index'
-  get 'broker_transactions/index'
-  get 'buyers_transactions/index'
-  get 'broker_stocks/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
   devise_for :users, controllers:  {
     confirmations:'confirmations',
     registrations: 'registrations'
@@ -14,11 +9,13 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/search'
   get 'home/about'
-  
+  get 'pending_broker_accounts/index'
+  get 'broker_stocks/index'
+  get 'buyers_stocks/available_stocks'
+
   resources :broker_stocks 
   resources :buyers_stocks
-
-
+  resources :trasanction_histories
 end
 
   

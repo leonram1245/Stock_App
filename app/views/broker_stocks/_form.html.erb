@@ -17,7 +17,7 @@
   <% end %>
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, min: 1 %>
   </div>
   <div class="submit">
     <%= form.submit "Buy Stock", class: "btn btn-success" %>

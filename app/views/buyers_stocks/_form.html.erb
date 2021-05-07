@@ -1,9 +1,9 @@
 <%= form_with(model: buyers_stock) do |form| %>
-  <% if broker_stock.errors.any? %>
+  <% if buyers_stock.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(broker_stock.errors.count, "error") %> , please check your inputs </h2>
+      <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
         <ul>
-          <% broker_stock.errors.each do |error| %>
+          <% buyers_stock.errors.each do |error| %>
             <li><%= error.full_message %></li>
           <% end %>
         </ul>
@@ -11,7 +11,7 @@
   <% end %>
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, min: 1  %>
   </div>
   <div class="submit">
     <%= form.submit "Buy Stock" %>

@@ -40,9 +40,10 @@
             </nav>
         </aside>
         <main class="col bg-faded py-3 flex-grow-1">
-          <h1>Most Active Stocks</h1>
-          <div>Date: <%= Date.today.strftime("%B %d, %Y") %></div>
-          <div>Time: <%= Time.now.strftime("%I:%M %p") %></div>
+          <span class="h1">Most Active Stocks</span>
+          <span class="w-500 p-3"></span>
+          <span class="h3">Date: <%= Date.today.strftime("%B %d, %Y") %></span>
+          <span class="h3">- <%= Time.now.strftime("%I:%M %p") %></span>
             <table class="table table-striped">
               <thead class="thead-dark">
               <tr class="text-center">

@@ -1,16 +1,21 @@
 class BuyersStocksController < ApplicationController
   before_action :set_buyers_stock, only: %i[ show ]
   
+  def available_stocks
+    @broker_stocks = BrokerStock.all
+  end
+
   def index
     @buyers_stocks = current_user.buyers_stocks
   end
+
   def show
   end
+
   def new
     @buyers_stock = current_user.buyers_stocks.build
-    @broker_stocks = BrokerStock.all
   end
-  
+
   def create
     @buyers_stock = current_user.buyers_stocks.build(buyers_stock_params)
     respond_to do |format|
@@ -23,7 +28,7 @@ class BuyersStocksController < ApplicationController
       end
     end
   end
-  
+
   private
     def set_buyers_stock
       @buyers_stock = current_user.buyers_stocks.find(params[:id])
