@@ -19,10 +19,10 @@
             <%= f.input:email, autofocus: true, autocomplete: "email",  placeholder:'enter your email' %>
             </div>
             <div class="form-input">
-             <%= f.input :password,input_html: { maxlength: 20 } , autocomplete: "current-password" , placeholder:'enter your password'%>     
+             <%= f.input :password,input_html: { maxlength: 20 } , autocomplete: "current-password" , placeholder:'enter your password', required:true%>     
             </div>
             <div class="form-input">
-             <%= f.input :password_confirmation, input_html: { maxlength: 20 } , placeholder:'confirm your password'%>     
+             <%= f.input :password_confirmation, input_html: { maxlength: 20 } , placeholder:'confirm your password', required:true%>     
             </div>
               <div>
               Select your desired role:
