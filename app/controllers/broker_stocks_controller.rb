@@ -1,10 +1,6 @@
 class BrokerStocksController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_broker_stock, only: %i[ show edit update destroy ]
-=======
   before_action :set_broker_stock, only: %i[ show ]
-  
->>>>>>> origin/eds-branch
+  load_and_authorize_resource 
   def index
     @broker_stocks = current_user.broker_stocks
     @client = IEX::Api::Client.new(
@@ -23,7 +19,7 @@ class BrokerStocksController < ApplicationController
       endpoint: 'https://sandbox.iexapis.com/v1'
     ) 
   end
-
+  
 
   def create
     @broker_stock = current_user.broker_stocks.build(broker_stock_params)
