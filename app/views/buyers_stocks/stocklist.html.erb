@@ -13,14 +13,14 @@
               <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Buy Stock', new_buyers_stock_path, class: "nav-link px-sm-0 px-2" %>
+              <%= link_to 'Portfolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2" %>
             </li>
           </ul>
         </div>
       </nav>
     </aside>
     <main class="col bg-faded py-3 flex-grow-1">
-      <h1>Buyer's Stocks</h1>
+      <h1>Available Stocks</h1>
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr class="text-center">
@@ -29,17 +29,22 @@
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Amount</th>
-            <th scoper="col">Broker</th>
+            <th scope="col">Broker</th>
+            <th scope="col">Id</th>
+            <th scope="col-md-4"></th>
           </tr>
         </thead>
         <tbody>
-          <% @brokers_stocks.each do |stock| %>
+          <% @broker_stocks.each do |@stock| %>
           <tr class="text-center">
-            <td scope="row"><%= stock.ticker %></td>
-            <td scope="row"><%= stock.company %></td>
-            <td scope="row"><%= stock.price %></td>
-            <td scope="row"><%= stock.quantity %></td>
-            <td scoper="row"><%= stock.user.email %></td>
+            <td scope="row"><%= @stock.ticker %></td>
+            <td scope="row"><%= @stock.company %></td>
+            <td scope="row"><%= @stock.price %></td>
+            <td scope="row"><%= @stock.quantity %></td>
+            <td scope="row"><%= @stock.price * stock.quantity %></td>
+            <td scope="row"><% @stock.id %></td>
+            <td scope="row"><%= @stock.user.email %></td>
+            <td scope="row"><%= link_to 'Buy', new_buyers_stock_path(@stock), class: "btn btn-success" %>
           </tr>
           <% end %>
         </tbody>

@@ -1,15 +1,6 @@
 class BrokerStocksController < ApplicationController
-<<<<<<< HEAD
   before_action :set_broker_stock, only: %i[ show ]
   
-=======
-<<<<<<< HEAD
-  before_action :set_broker_stock, only: %i[ show edit update destroy ]
-=======
-  before_action :set_broker_stock, only: %i[ show ]
-  
->>>>>>> origin/eds-branch
->>>>>>> origin/beta
   def index
     @broker_stocks = current_user.broker_stocks
     @client = IEX::Api::Client.new(

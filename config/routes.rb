@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'home/about'
   get 'pending_broker_accounts/index'
   get 'broker_stocks/index'
-  get 'buyers_stocks/available_stocks'
+  get 'buyers_stocks/stocklist'
 
   resources :broker_stocks 
   resources :buyers_stocks
