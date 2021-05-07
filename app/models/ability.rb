@@ -5,7 +5,6 @@ class Ability
   def initialize(user)
     user ||= User.new 
     if user.has_role? :admin
-      can :manage, User
       can :manage, ApprovedBrokerAccount, :broker_email_confirmed => true
       can :manage, PendingBrokerAccount, :broker_email_confirmed => false
       can :read, BrokerStock
@@ -15,7 +14,9 @@ class Ability
       can :manage, BuyersStock
       can :manage, BrokerStock
     elsif user.has_role? :broker
-      can :manage, BrokerStock, :broker_email_confirmed => true
+      can :manage, BrokerStock
     end
   end
 end
+
+
