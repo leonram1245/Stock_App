@@ -1,6 +1,5 @@
 class BuyersStock < ApplicationRecord
   resourcify
-  belongs_to :broker_stock
-  has_many :transactions
+  belongs_to :user
   validates :price, :ticker, :company, :quantity, presence: true
 end

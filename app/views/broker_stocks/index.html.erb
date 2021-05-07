@@ -1,4 +1,8 @@
 <div class="container-fluid">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/beta
     <div class="row min-vh-100 flex-column flex-md-row">
         <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
             <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
@@ -48,4 +52,59 @@
           </table>
         </main>
     </div>
+<<<<<<< HEAD
+=======
+=======
+  <div class="row min-vh-100 flex-column flex-md-row">
+    <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+      <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+        <div class="collapse navbar-collapse ">
+          <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+                <div class="nav-link pl-0 text-nowrap">
+                <i class="fas fa-chart-line"></i> 
+                <span class="font-weight-bold">Stock Trading App</span></div>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Home', home_index_path, class: "nav-link px-sm-0 px-2" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Buy Stock', new_broker_stock_path, class: "nav-link px-sm-0 px-2" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="col bg-faded py-3 flex-grow-1">
+      <h1>Broker's Stocks</h1>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr class="text-center">
+            <th scope="col">Ticker</th>
+            <th scope="col">Company</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @broker_stocks.each do |stock| %>
+          <tr class="text-center">
+            <td scope="row"><%= stock.ticker %></td>
+            <td scope="row"><%= stock.company %></td>
+            <td scope="row">$ <%= stock.price %></td>
+            <td scope="row"><%= stock.quantity %></td>
+            <% if stock.quantity != nil %>
+            <td scope="row">$ <%= stock.price * stock.quantity %></td>
+            <% else %>
+            <td scope="row">$ <%= stock.price %>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </main>
+  </div>
+>>>>>>> origin/eds-branch
+>>>>>>> origin/beta
 </div>
