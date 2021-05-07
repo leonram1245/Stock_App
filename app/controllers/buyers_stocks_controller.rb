@@ -33,7 +33,8 @@ class BuyersStocksController < ApplicationController
     def set_buyers_stock
       @buyers_stock = current_user.buyers_stocks.find(params[:id])
     end
+    
     def buyers_stock_params
-      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :user_id, :broker_stock_id)
+      params.require(:buyers_stock).permit(:price, :ticker, :company, :quantity, :user_id)
     end
 end

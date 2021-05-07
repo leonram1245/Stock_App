@@ -11,6 +11,6 @@ class  ConfirmationsController < Devise::ConfirmationsController
         buyers_stocks_path
       elsif current_user.has_role? :broker
         broker_stocks_path
+      end
     end
-end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Sign Out process', type: :feature do
+RSpec.describe 'Sign out as a buyer or broker', type: :feature do
   let(:user) { create(:user) }
 
   before(:each) do
@@ -8,8 +8,10 @@ RSpec.describe 'Sign Out process', type: :feature do
   end
 
   it "should redirect user to Login Page" do
-    visit root_path
-
+    visit broker_stocks_path
+    
+    click_link "Home"
+    
     within "#sign_out" do
       click_link "Sign Out"
     end

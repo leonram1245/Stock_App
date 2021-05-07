@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   has_many :broker_stocks, dependent: :destroy
   has_many :buyers_stocks, dependent: :destroy
+  has_many :transaction_histories
 end

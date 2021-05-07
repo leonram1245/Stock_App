@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row min-vh-100 flex-column flex-md-row">
+        <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                <div class="collapse navbar-collapse ">
+                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <div class="nav-link pl-0 text-nowrap">
+                            <i class="fas fa-chart-line"></i> 
+                            <span class="font-weight-bold">Stock Trading App</span></div>
+                        </li>
+                        <li class="nav-item">
+                            <% link_to "Home", home_index_path %>
+                        </li>
+                        <li class="nav-item">
+                            <% if current_user.has_role?(:broker) %>
+                              <%= link_to 'Portfolio', broker_stocks_path, class: "nav-link px-sm-0 px-2", id: "broker" %>
+                            <% elsif current_user.has_role?(:buyer) %>
+                              <%= link_to 'Portolio', buyers_stocks_path, class: "nav-link px-sm-0 px-2", id: "buyer" %>
+                            <% elsif current_user.has_role?(:admin) %>
+                              <%= link_to 'Admin\'s Dashboard', rails_admin_path, class: "nav-link px-sm-0 px-2", id: "admin" %>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        <main class="col bg-faded py-3 flex-grow-1">
+          <h1>Transactions</h1>
+        </main>
+    </div>
+</div>

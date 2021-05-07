@@ -30,21 +30,20 @@
             <th scope="col">Quantity</th>
             <th scope="col">Amount</th>
             <th scope="col">Broker</th>
-            <th scope="col">Id</th>
+            
             <th scope="col-md-4"></th>
           </tr>
         </thead>
         <tbody>
-          <% @broker_stocks.each do |@stock| %>
+          <% @broker_stocks.each do |stock| %>
           <tr class="text-center">
-            <td scope="row"><%= @stock.ticker %></td>
-            <td scope="row"><%= @stock.company %></td>
-            <td scope="row"><%= @stock.price %></td>
-            <td scope="row"><%= @stock.quantity %></td>
-            <td scope="row"><%= @stock.price * stock.quantity %></td>
-            <td scope="row"><% @stock.id %></td>
-            <td scope="row"><%= @stock.user.email %></td>
-            <td scope="row"><%= link_to 'Buy', new_buyers_stock_path(@stock), class: "btn btn-success" %>
+            <td scope="row"><%= stock.ticker %></td>
+            <td scope="row"><%= stock.company %></td>
+            <td scope="row"><%= stock.price %></td>
+            <td scope="row"><%= stock.quantity %></td>
+            <td scope="row"><%= stock.price * stock.quantity %></td>
+            <td scope="row"><%= stock.user.email %></td>
+            <td scope="row"><%= link_to 'Buy', new_buyers_stock_path, class: "btn btn-success" %>
           </tr>
           <% end %>
         </tbody>

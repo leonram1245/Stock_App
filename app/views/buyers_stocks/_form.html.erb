@@ -1,35 +1,33 @@
-<% @stock do %>
-      <%= form_with(model: buyers_stock) do |form| %>
-      <% if buyers_stock.errors.any? %>
-      <div id="error_explanation">
-          <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
-          <ul>
-              <% buyers_stock.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-              <% end %>
-          </ul>
+<%= form_with(model: buyers_stock) do |form| %>
+  <% if buyers_stock.errors.any? %>
+  <div id="error_explanation">
+      <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
+      <ul>
+          <% buyers_stock.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+          <% end %>
+      </ul>
+  </div>
+  <% end %>
+      <div class="field ">
+        <%= form.text_field :ticker, value: "#{stock.ticker}" %>
       </div>
-      <% end %>
-      
-          <div class="field ">
-            <%= form.text_field :ticker, value: "#{stock.ticker}" %>
-          </div>
-       
-          <div class="field ">
-            <%= form.text_field :company, value: "#{stock.company}" %>
-          </div>
-       
-          <div class="field invisible">
-            <%= form.number_field :price, value: "#{stock.price}" %>
-          </div>
-        
-          <div class="field invisible">
-            <%= form.number_field :quantity, value: "#{stock.quantity}" %>
-          </div>
-       
-          <div class="submit">
-          <%= form.submit "Buy", class: "btn btn-success" %>
-          </div>
-    <% end %>
-<% end %> 
+    
+      <div class="field ">
+        <%= form.text_field :company, value: "#{stock.company}" %>
+      </div>
+    
+      <div class="field invisible">
+        <%= form.number_field :price, value: "#{stock.price}" %>
+      </div>
+    
+      <div class="field invisible">
+        <%= form.number_field :quantity, value: "#{stock.quantity}" %>
+      </div>
+    
+      <div class="submit">
+      <%= form.submit "Buy", class: "btn btn-success" %>
+      </div>
+<% end %>
+
  
