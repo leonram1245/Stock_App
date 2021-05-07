@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'pending_broker_accounts/index'
-  get 'broker_transactions/index'
-  get 'buyers_transactions/index'
   get 'broker_stocks/index'
+  get 'buyers_stocks/available_stocks'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   devise_for :users, controllers:  {
