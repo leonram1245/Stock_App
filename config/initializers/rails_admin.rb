@@ -29,19 +29,6 @@ RailsAdmin.config do |config|
       field :confirmed_at
       field :roles
     end
-    edit do
-      field :broker_email_confirmed do
-        pretty_value do
-         if bindings[:object].broker_email_confirmed==false
-             %{<span style="color:blank;" >ON</span>}.html_safe
-           else
-             %{<span style="color:blank;" >OFF</span>}.html_safe
-         end
-       end
-      end 
-      field :password
-      field :password_confirmation  
-    end
   end
 
   config.model BrokerStock do 
@@ -55,7 +42,6 @@ RailsAdmin.config do |config|
     end
       field :ticker
       field :company
-      field :price
       field :quantity
   end
     show do
@@ -68,64 +54,23 @@ RailsAdmin.config do |config|
     end
 end
 
-  config.model PendingBrokerAccount do
-  label "Manage User Accounts" 
-  list do
-    field :email
-    field :broker_email_confirmed
-    field :roles do
-     searchable :name
-     queryable :true
+config.model BuyersStock do
+   list do 
+      field :id
+      field :user 
+      field :email do
+        pretty_value do
+          bindings[:object].user&.email
+      end
     end
-    end
-  show do
-    field :email
-    field :broker_email_confirmed
-    field :roles
+      field :ticker
+      field :company
+      field :quantity
   end
-  edit do
-    field :broker_email_confirmed do
-      pretty_value do
-       if bindings[:object].broker_email_confirmed==false
-           %{<span style="color:blank;" >ON</span>}.html_safe
-         else
-           %{<span style="color:blank;" >OFF</span>}.html_safe
-       end
-     end
-    end 
-    field :password
-    field :password_confirmation  
-  end
+     
 end
 
-config.model ApprovedBrokerAccount do
-  list do
-    field :email
-    field :broker_email_confirmed
-    field :roles do
-     searchable :name
-     queryable :true
-    end
-    end
-  show do
-    field :email
-    field :broker_email_confirmed
-    field :roles
-  end
-  edit do
-    field :broker_email_confirmed do
-      pretty_value do
-       if bindings[:object].broker_email_confirmed==false
-           %{<span style="color:blank;" >ON</span>}.html_safe
-         else
-           %{<span style="color:blank;" >OFF</span>}.html_safe
-       end
-     end
-    end 
-    field :password
-    field :password_confirmation  
-  end
-end
+ 
 
 
 

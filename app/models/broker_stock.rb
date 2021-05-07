@@ -4,3 +4,5 @@ class BrokerStock < ApplicationRecord
     validates :price, :ticker, :company, :quantity, presence: true
   end
 
+
+  

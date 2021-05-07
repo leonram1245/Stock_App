@@ -1,2 +1,0 @@
-class ApprovedBrokerAccount < User
-end

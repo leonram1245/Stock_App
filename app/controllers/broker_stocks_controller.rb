@@ -13,6 +13,7 @@ class BrokerStocksController < ApplicationController
   end
 
   def new
+
     @broker_stock = current_user.broker_stocks.build
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',

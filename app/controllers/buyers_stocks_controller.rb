@@ -15,10 +15,7 @@ class BuyersStocksController < ApplicationController
     @broker_stocks = BrokerStock.all
     end
 
-  def available_stocks
-    
-  end
-
+ 
 
   def create
     @buyers_stock = current_user.buyers_stocks.build(buyers_stock_params)

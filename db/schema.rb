@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_033357) do
+ActiveRecord::Schema.define(version: 2021_05_07_213914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_033357) do
     t.integer "user_id"
     t.integer "quantity"
     t.string "company"
-    t.decimal "price"
     t.string "ticker"
+    t.decimal "price"
   end
 
   create_table "buyers_stocks", force: :cascade do |t|
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2021_05_07_033357) do
     t.bigint "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "transaction_id"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end

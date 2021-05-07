@@ -1,2 +1,0 @@
-class PendingBrokerAccount < User
-end

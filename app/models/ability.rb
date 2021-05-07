@@ -5,16 +5,21 @@ class Ability
   def initialize(user)
     user ||= User.new 
     if user.has_role? :admin
-      can :manage, ApprovedBrokerAccount, :broker_email_confirmed => true
-      can :manage, PendingBrokerAccount, :broker_email_confirmed => false
+      can :manage, User
       can :read, BrokerStock
-      can :access, :rails_admin       # only allow admin users to access Rails Admin
-      can :manage, :dashboard         # allow access to dashboard
+      can :read, BuyersStock
+      can :access, :rails_admin          
+      can :manage, :dashboard          
     elsif user.has_role? :buyer
       can :manage, BuyersStock
       can :manage, BrokerStock
+      can :access, :rails_admin          
+      can :manage, :dashboard 
     elsif user.has_role? :broker
       can :manage, BrokerStock
+      can :manage, BuyersStock
+      can :access, :rails_admin          
+      can :manage, :dashboard 
     end
   end
 end
