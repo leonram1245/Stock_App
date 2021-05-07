@@ -1,38 +1,5 @@
-<<<<<<< HEAD
-<%= form_with(model: buyers_stock) do |form| %>
-  <% if broker_stock.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(broker_stock.errors.count, "error") %> , please check your inputs </h2>
-        <ul>
-          <% broker_stock.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-  <div class="submit">
-    <%= form.submit "Buy Stock" %>
-  </div>
-  <div class="field">
-    <%= form.label :ticker %>
-    <%= form.text_field :ticker, value: "#{@broker_stock.ticker}" %>
-  </div>
-  <div class="field">
-    <%= form.label :company %>
-    <%= form.text_field :company, value: "#{@broker_stock.company}" %>
-  </div>
-  <div class="field invisible">
-    <%= form.label :price %>
-    <%= form.number_field :price, value: "#{@broker_stock.price}" %>
-  </div>
-<% end %> 
-=======
 
-<%= form_with(model: buyers_stock) do |form| %>
+
 <% if buyers_stock.errors.any? %>
     <div id="error_explanation">
         <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
@@ -56,16 +23,17 @@
     </thead>
     <tbody>
       <% @broker_stocks.each do |stock| %>
+      <%= form_with(model: buyers_stock) do |form| %>
       <tr>
         <td scope="col">
           <%= stock.ticker %>
-          <div class="field invisible">
+          <div class="field ">
             <%= form.text_field :ticker, value: "#{stock.ticker}" %>
           </div>
         </td>
         <td scope="col">
           <%= stock.company %>
-          <div class="field invisible">
+          <div class="field ">
             <%= form.text_field :company, value: "#{stock.company}" %>
           </div>
         </td>
@@ -95,4 +63,3 @@
 </table>
 <% end %> 
  
->>>>>>> origin/eds-branch
