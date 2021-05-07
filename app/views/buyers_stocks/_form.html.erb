@@ -1,5 +1,4 @@
 
-
 <% if buyers_stock.errors.any? %>
     <div id="error_explanation">
         <h2><%= pluralize(buyers_stock.errors.count, "error") %> , please check your inputs </h2>
@@ -10,6 +9,8 @@
         </ul>
     </div>
 <% end %>
+     <% @broker_stocks.each do |stock| %>
+      <%= form_with(model: buyers_stock) do |form| %>
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
@@ -22,20 +23,18 @@
         </tr>
     </thead>
     <tbody>
-      <% @broker_stocks.each do |stock| %>
-      <%= form_with(model: buyers_stock) do |form| %>
       <tr>
         <td scope="col">
           <%= stock.ticker %>
-          <div class="field ">
+          <div class="field invisible ">
             <%= form.text_field :ticker, value: "#{stock.ticker}" %>
           </div>
-        </td>
-        <td scope="col">
+           <td scope="col">
           <%= stock.company %>
-          <div class="field ">
+          <div class="field invisible">
             <%= form.text_field :company, value: "#{stock.company}" %>
           </div>
+        </td>
         </td>
         <td scope="col">
           $ <%= stock.price %>

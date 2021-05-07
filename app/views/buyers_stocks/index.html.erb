@@ -28,6 +28,8 @@
             <th scope="col">Company</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Amount</th>
+
 
           </tr>
         </thead>
@@ -36,8 +38,9 @@
           <tr class="text-center">
             <td scope="row"><%= stock.ticker %></td>
             <td scope="row"><%= stock.company %></td>
-            <td scope="row"><%= stock.price %></td>
+            <td scope="row">$<%= stock.price %></td>
             <td scope="row"><%= stock.quantity %></td>
+            <td scope="row">$<%= (stock.quantity * stock.price).round(2)%></td>
           </tr>
           <% end %>
         </tbody>
