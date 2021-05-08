@@ -17,6 +17,10 @@ class Ability
       can :manage, BrokerStock
       can :access, :rails_admin    
       can :manage, :dashboard 
+      can :manage, User
+      can :manage, Role
+      can :read, BrokerStock
+      can :read, BuyersStock
     end
   end
 end
