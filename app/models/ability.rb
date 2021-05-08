@@ -15,12 +15,11 @@ class Ability
       can :manage, BuyersStock
     elsif user.has_role? :broker
       can :manage, BrokerStock
+      can :read, BuyersStock
       can :access, :rails_admin    
       can :manage, :dashboard 
       can :manage, User
       can :manage, Role
-      can :read, BrokerStock
-      can :read, BuyersStock
     end
   end
 end
