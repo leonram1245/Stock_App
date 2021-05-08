@@ -16,6 +16,7 @@ class Ability
     elsif user.has_role? :broker
       can :manage, BrokerStock
       can :access, :rails_admin    
+      can :manage, :dashboard 
     end
   end
 end
