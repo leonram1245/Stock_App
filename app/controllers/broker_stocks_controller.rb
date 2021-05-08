@@ -5,7 +5,7 @@ class BrokerStocksController < ApplicationController
     @broker_stocks = current_user.broker_stocks
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
-      endpoint: 'https://sandbox.iexapis.com/v1'
+      endpoint: 'https://cloud.iexapis.com/v1'
     )
   end
 
@@ -17,7 +17,7 @@ class BrokerStocksController < ApplicationController
     @broker_stock = current_user.broker_stocks.build
     @client = IEX::Api::Client.new(
       publishable_token: 'Tpk_5a1173a0676d48fd8e83ac1798fd8669',
-      endpoint: 'https://sandbox.iexapis.com/v1'
+      endpoint: 'https://cloud.iexapis.com/v1'
     ) 
   end
   
